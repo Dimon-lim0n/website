@@ -1,0 +1,176 @@
+<html lang="ru">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+       <title> 
+        Регистрация
+      </title>
+    <br>
+    <br>
+    <header>
+      <ul>
+          <li><a href="Main.html">Главная</a></li>
+          <li><a href="Reg.html">Регистрация</a></li>
+          <li><a href="Authorization.html">Авторизация</a></li>
+          <li><a href="Cabinet.html">Личный кабинет</a></li>
+          <li><a href="Main.html #about">О нас</a></li>
+          <li><a href="Contest.html">Конкурсы</a></li>
+          <li><a href="Main.html #footerr">Контакты</a></li>  
+          <li><a href="Main.html #feedback">Отзывы</a></li>  
+          <form action="/search" method="GET" style="position: absolute; top: 10px; right: 150px;"> <!-- Укажите ваш URL для обработки поиска -->
+              <input type="text" name="query" placeholder="Введите ваш запрос" required>
+              <input type="submit" value="Поиск">
+          </form>
+          <button onclick="toggleTheme()" style="position: absolute; top: 10px; right: 10px;">Переключить тему</button>
+      </ul>
+  </header>
+  <style>
+      body {
+          background-color: #333333; /* Светлый фон */
+          color: #ffffff; /* Черный текст */
+      }
+      
+      ul {  
+              list-style-type: none;  
+              margin: 0;  
+              padding: 0;  
+              overflow: hidden;  
+              background-color: #444; /* Темный цвет шапки по умолчанию */  
+          }  
+      
+          li {  
+              float: left;  
+          }  
+      
+          li a {  
+              display: block;  
+              color: white;  
+              text-align: center;  
+              padding: 14px 16px;  
+              text-decoration: none;  
+          }  
+      
+          li a:hover {  
+              background-color: #555; /* Более светлый фон при наведении в темной теме */
+              color: #ffffff; /* Цвет текста при наведении в темной теме */
+          }  
+          body[data-theme="light"] li a:hover {
+              background-color: #ddd; /* Более светлый фон при наведении в светлой теме */
+              color: #000000; /* Цвет текста при наведении в светлой теме */
+          }
+  </style>
+  <script> 
+      function toggleTheme() { 
+          const body = document.body; 
+          const links = document.querySelectorAll("ul li a"); 
+          const allUls = document.querySelectorAll("ul"); // Выбор всех <ul> 
+          const currentTheme = body.getAttribute("data-theme"); 
+       
+          if (currentTheme === "light") { 
+              body.setAttribute("data-theme", "dark"); 
+              body.style.backgroundColor = "#333333"; // Темный фон 
+              body.style.color = "#ffffff"; // Светлый текст 
+  
+              links.forEach(link => { 
+                  link.style.color = "white"; // Цвет текста ссылок в темной теме 
+              }); 
+  
+              allUls.forEach(ul => { 
+                  ul.style.backgroundColor = "#444"; // Темный фон для всех <ul> 
+                  ul.style.color = "white"; // Светлый текст для всех <ul> 
+              }); 
+  
+          } else { 
+              body.setAttribute("data-theme", "light"); 
+              body.style.backgroundColor = "#ffffff"; // Светлый фон 
+              body.style.color = "#000000"; // Темный текст 
+  
+              links.forEach(link => { 
+                  link.style.color = "black"; // Цвет текста ссылок в светлой теме 
+              }); 
+  
+              allUls.forEach(ul => { 
+                  ul.style.backgroundColor = "#f1f1f1"; // Светлый фон для всех <ul> 
+                  ul.style.color = "black"; // Темный текст для всех <ul> 
+              }); 
+          } 
+      } 
+  </script>
+  </head>
+
+<body>
+<div id="id01" class="modal">
+  <form class="modal-content" action="../action_page.php">
+    <div class="container" style="position: relative">
+      <h1>Регистрация</h1>
+      <p>Заполните данные для регистрации</p>
+      <hr>
+      <div style="position: absolute; right: 30%; text-align: center;">
+      <label for="email"><b>Email</b></label>
+      <br>
+      <input type="text" placeholder=" Ведите Email" name="email" required>
+      <br>
+      <label for="name"><b>Имя</b></label>
+      <br>
+      <input type="text" placeholder=" Ведите Имя" name="name" required>
+      <br>
+      <label for="surname"><b>Фамилия</b></label>
+      <br>
+      <input type="text" placeholder=" Ведите Фамилию" name="surname" required>
+      <br>
+      <label for="age"><b>Возраст</b></label>
+      <br>
+      <input type="text" placeholder=" Ведите Возраст" name="age" required>
+      <br>
+      <label for="psw"><b>Пароль</b></label>
+      <br>
+      <input type="password" placeholder=" Ведите пароль" name="psw" required>
+      <br>
+      <label for="psw-repeat"><b>Повторите пароль</b></label>
+      <br>
+      <input type="password" placeholder="Повторите пароль" name="psw-repeat" required>
+      <br>
+      <form action="/action_page.php">
+        Выберите пол
+        <br>
+        <input type="radio" id="male" name="fav_language" value="Мужчина">
+        <label for="male">Мужчина</label>
+        <input type="radio" id="female" name="fav_language" value="Женщина">
+        <label for="fwmale">Женщина</label> <br>
+      </form>
+      <label for="photo">Загрузите фотографию:</label><br>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+      <br>
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Запомнить меня
+      </label>
+      <p>Создавая учетную запись, вы соглашаетесь с нашим <a href="#" style="color:dodgerblue">Условием и конфиденциальностью</a>.</p>
+
+      <div class="clearfix"> 
+        <button type="button" onclick="window.location.href='Main.html';" class="cancelbtn">Отменить</button> 
+        <button type="submit" class="signupbtn" onclick="handleLogin()">Вход</button> 
+    </div>
+      <script>
+        function handleLogin() {
+            const isValid = true; // логика проверки данных
+            if (isValid) {
+                window.location.href = 'Cabinet.html'; // Переход на Cabinet.html при успешном входе
+            } else {
+                alert('Неверные данные'); // Сообщение об ошибке
+            }
+        }
+        </script>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id01');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+</body>
+</html>

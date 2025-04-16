@@ -1,0 +1,142 @@
+<html lang="ru">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <head>
+        
+        <title> 
+            Личный кабинет
+          </title>
+        <br>
+        <br>
+        <header>
+            <ul>
+                <li><a href="Main.html">Главная</a></li>
+                <li><a href="Reg.html">Регистрация</a></li>
+                <li><a href="Authorization.html">Авторизация</a></li>
+                <li><a href="Cabinet.html">Личный кабинет</a></li>
+                <li><a href="Main.html #about">О нас</a></li>
+                <li><a href="Contest.html">Конкурсы</a></li>
+                <li><a href="Main.html #footerr">Контакты</a></li>  
+                <li><a href="Main.html #feedback">Отзывы</a></li>  
+                <form action="/search" method="GET" style="position: absolute; top: 10px; right: 150px;"> <!-- Укажите ваш URL для обработки поиска -->
+                    <input type="text" name="query" placeholder="Введите ваш запрос" required>
+                    <input type="submit" value="Поиск">
+                </form>
+                <button onclick="toggleTheme()" style="position: absolute; top: 10px; right: 10px;">Переключить тему</button>
+            </ul>
+        </header>
+        <style>
+            body {
+                background-color: #333333; /* Светлый фон */
+                color: #ffffff; /* Черный текст */
+            }
+            
+            ul {  
+                    list-style-type: none;  
+                    margin: 0;  
+                    padding: 0;  
+                    overflow: hidden;  
+                    background-color: #444; /* Темный цвет шапки по умолчанию */  
+                }  
+            
+                li {  
+                    float: left;  
+                }  
+            
+                li a {  
+                    display: block;  
+                    color: white;  
+                    text-align: center;  
+                    padding: 14px 16px;  
+                    text-decoration: none;  
+                }  
+            
+                li a:hover {  
+                    background-color: #555; /* Более светлый фон при наведении в темной теме */
+                    color: #ffffff; /* Цвет текста при наведении в темной теме */
+                }  
+                body[data-theme="light"] li a:hover {
+                    background-color: #ddd; /* Более светлый фон при наведении в светлой теме */
+                    color: #000000; /* Цвет текста при наведении в светлой теме */
+                }
+        </style>
+        <script> 
+            function toggleTheme() { 
+                const body = document.body; 
+                const links = document.querySelectorAll("ul li a"); 
+                const allUls = document.querySelectorAll("ul"); // Выбор всех <ul> 
+                const currentTheme = body.getAttribute("data-theme"); 
+             
+                if (currentTheme === "light") { 
+                    body.setAttribute("data-theme", "dark"); 
+                    body.style.backgroundColor = "#333333"; // Темный фон 
+                    body.style.color = "#ffffff"; // Светлый текст 
+        
+                    links.forEach(link => { 
+                        link.style.color = "white"; // Цвет текста ссылок в темной теме 
+                    }); 
+        
+                    allUls.forEach(ul => { 
+                        ul.style.backgroundColor = "#444"; // Темный фон для всех <ul> 
+                        ul.style.color = "white"; // Светлый текст для всех <ul> 
+                    }); 
+        
+                } else { 
+                    body.setAttribute("data-theme", "light"); 
+                    body.style.backgroundColor = "#ffffff"; // Светлый фон 
+                    body.style.color = "#000000"; // Темный текст 
+        
+                    links.forEach(link => { 
+                        link.style.color = "black"; // Цвет текста ссылок в светлой теме 
+                    }); 
+        
+                    allUls.forEach(ul => { 
+                        ul.style.backgroundColor = "#f1f1f1"; // Светлый фон для всех <ul> 
+                        ul.style.color = "black"; // Темный текст для всех <ul> 
+                    }); 
+                } 
+            } 
+        </script>
+    </head>
+    <body>
+    <div id="id01" class="modal">
+        <form class="modal-content" action="../action_page.php">
+          <div class="container" style="position: relative">
+            <h1>Личный кабинет</h1>
+            <hr>
+            <div style="position: absolute; right: 40%; text-align: center;">
+            <label for="contest"><b>Конкурсы</b></label>
+            <br>
+            <select name="choice_contest">
+                <option value="1">Игровая программа "Весёлый космодром"</option>
+                <option value="2">Игра-квест "Покорители космоса"</option>
+                <option value="3">Планетарий Счастливый Космос</option>
+            </select>
+            <br>
+            <label for="date"><b>Дата</b></label>
+            <br>
+            <input type="date" id="date" value="2024-07-08">
+            <input type="date" name="bday" min="2014-05-11" max="2014-05-20">
+            <br>
+            <form>
+                <input id="appt-time" type="time" name="appt-time" min="9:00" max="21:00" />
+                <span class="validity"></span>
+              </form>           <br>
+            <label for="quantity"><b>Количество человек</b></label>
+            <br>
+            <input type="number" placeholder=" Ведите Кол-во человек" name="quantity" required>
+            <br>
+            
+    <button type="button" onclick="window.location.href='Main.html';" class="cancelbtn">Выход</button> 
+            <button type="button">Записаться</button> 
+        </body>
+
+
+
+
+
+
+
+
+</html>

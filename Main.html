@@ -1,0 +1,441 @@
+<html lang="ru">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <br>
+        <br>
+        <header>
+            <ul>
+                <li><a href="Main.html">Главная</a></li>
+                <li><a href="Reg.html">Регистрация</a></li>
+                <li><a href="Authorization.html">Авторизация</a></li>
+                <li><a href="Cabinet.html">Личный кабинет</a></li>
+                <li><a href="Main.html #about">О нас</a></li>
+                <li><a href="Contest.html">Конкурсы</a></li>
+                <li><a href="Main.html #footerr">Контакты</a></li>  
+                <li><a href="Main.html #feedback">Отзывы</a></li>   
+                <form action="/search" method="GET" style="position: absolute; top: 10px; right: 150px;"> <!-- Укажите ваш URL для обработки поиска -->
+                    <input type="text" name="query" placeholder="Введите ваш запрос" required>
+                    <input type="submit" value="Поиск">
+                </form>
+                <button onclick="toggleTheme()" style="position: absolute; top: 10px; right: 10px;">Переключить тему</button>
+            </ul>
+        </header>
+        
+        <title> 
+        Моя семья - мой космос  
+        </title>
+        <h1>
+            Главная
+        </h1>
+        <div style="right: 50%; text-align: center;">
+        <img src="https://sun9-79.userapi.com/impg/Luyarh9yJFCUfLxkzdx8wsRQamA7YFBW4bvkpQ/LiHWM6z6I6s.jpg?size=662x244&quality=95&sign=47931e47d1f9dff64f539ea6a11a6210&type=album" style="width: 700px; height: 300px;">
+        </div>
+        <br>
+   
+        <style>  
+            body {  
+                background-color: #333333; /* Темный фон по умолчанию */  
+                color: #ffffff; /* Светлый текст по умолчанию */  
+            }  
+        
+            ul {  
+                list-style-type: none;  
+                margin: 0;  
+                padding: 0;  
+                overflow: hidden;  
+                background-color: #444; /* Темный цвет шапки по умолчанию */  
+            }  
+        
+            li {  
+                float: left;  
+            }  
+        
+            li a {  
+                display: block;  
+                color: white;  
+                text-align: center;  
+                padding: 14px 16px;  
+                text-decoration: none;  
+            }  
+        
+            li a:hover {  
+                background-color: #555; /* Более светлый фон при наведении в темной теме */
+                color: #ffffff; /* Цвет текста при наведении в темной теме */
+            }  
+            body[data-theme="light"] li a:hover {
+                background-color: #ddd; /* Более светлый фон при наведении в светлой теме */
+                color: #000000; /* Цвет текста при наведении в светлой теме */
+            }
+                .slideshow-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+        }
+       
+        .container {
+            display: none; /* Скрываем все контейнеры по умолчанию */
+            padding: 20px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #444;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .active {
+            display: block; /* Показываем только активный контейнер */
+        }
+        .slide {
+            display: none; /* Скрываем все слайды по умолчанию */
+        }
+        .active {
+            display: block; /* Показываем только активный слайд */
+        }
+        #subscription-form {
+            display: none; /* Скрываем форму по умолчанию */
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #frame {
+    margin: 0 auto;
+    width: 500px;
+    max-width: 100%;
+    text-align: center;
+}
+
+#frame input[type=radio] {
+    display: none;
+}
+
+#frame label {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#slides {
+    padding: 10px;
+    border: 5px solid #786;
+    background: #999;
+    position: relative;
+    z-index: 1;
+}
+
+#overflow {
+    width: 100%;
+    overflow: hidden;
+}
+
+#frame1:checked~#slides .inner {
+    margin-left: 0;
+}
+
+#frame2:checked~#slides .inner {
+    margin-left: -100%;
+}
+
+#frame3:checked~#slides .inner {
+    margin-left: -200%;
+}
+
+#frame4:checked~#slides .inner {
+    margin-left: -300%;
+}
+
+#slides .inner {
+    transition: margin-left 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    width:  400%;
+    line-height: 0;
+    height: 300px;
+}
+
+#slides .frame {
+    width: 25%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #FFF;
+}
+
+#slides .frame_1 {
+    background: #444;
+}
+
+#slides .frame_2 {
+    background: #444;
+}
+
+#slides .frame_3 {
+    background: #444;
+}
+
+#slides .frame_4 {
+    background: #444;
+}
+
+#controls {
+    margin: -180px 0 0 0;
+    width: 100%;
+    height: 50px;
+    z-index: 3;
+    position: relative;
+}
+
+#controls label {
+    transition: opacity 0.2s ease-out;
+    display: none;
+    width: 50px;
+    height: 50px;
+    opacity: .4;
+}
+
+#controls label:hover {
+    opacity: 1;
+}
+
+#frame1:checked~#controls label:nth-child(2),
+#frame2:checked~#controls label:nth-child(3),
+#frame3:checked~#controls label:nth-child(4),
+#frame4:checked~#controls label:nth-child(1) {
+    background:
+        url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
+    float: right;
+    margin: 0 -50px 0 0;
+    display: block;
+}
+
+#frame1:checked~#controls label:nth-last-child(2),
+#frame2:checked~#controls label:nth-last-child(3),
+#frame3:checked~#controls label:nth-last-child(4),
+#frame4:checked~#controls label:nth-last-child(1) {
+    background:
+        url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
+    float: left;
+    margin: 0 0 0 -50px;
+    display: block;
+}
+
+#bullets {
+    margin: 150px 0 0;
+    text-align: center;
+}
+
+#bullets label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: #ccc;
+    margin: 0 10px;
+}
+
+#frame1:checked~#bullets label:nth-child(1),
+#frame2:checked~#bullets label:nth-child(2),
+#frame3:checked~#bullets label:nth-child(3),
+#frame4:checked~#bullets label:nth-child(4) {
+    background: #444;
+}
+
+@media screen and (max-width: 900px) {
+
+    #frame1:checked~#controls label:nth-child(2),
+    #frame2:checked~#controls label:nth-child(3),
+    #frame3:checked~#controls label:nth-child(4),
+    #frame4:checked~#controls label:nth-child(1),
+    #frame1:checked~#controls label:nth-last-child(2),
+    #frame2:checked~#controls label:nth-last-child(3),
+    #frame3:checked~#controls label:nth-last-child(4),
+    #frame4:checked~#controls label:nth-last-child(1) {
+        margin: 0;
+    }
+
+    #slides {
+        max-width: calc(100% - 140px);
+        margin: 0 auto;
+    }
+}
+        </style>
+    </head>
+
+    <body>
+        <div id="frame">
+            <input type="radio" name="frame" id="frame1" checked />
+            <input type="radio" name="frame" id="frame2" />
+            <input type="radio" name="frame" id="frame3" />
+            <div id="slides">
+                <div id="overflow">
+                    <div class="inner">
+                        <div class="frame frame_1">
+                            <div class="frame-content">
+                                <img src="https://sun9-65.userapi.com/impg/lCM6XGYnXtkYe0mExHa_H8l8sisakyPKhD5uJA/LxR4aekdFDs.jpg?size=500x300&quality=95&sign=33e9f1fbab2e72ded7dd2449c5682150&type=album" style="width: 500px; height: 300px;">
+                            </div>
+                        </div>
+                        <div class="frame frame_2">
+                            <div class="frame-content">
+                                <img src="https://sun9-11.userapi.com/impg/WSxO9J0c_Y1HLwmQ-B3MnwUPLmP1us0M-EopIQ/Z6h4HJDzu70.jpg?size=500x300&quality=95&sign=a9167d63a22d79d0a3603c56e9023279&type=album" style="width: 100%; height: 100%;">
+                            </div>
+                        </div>
+                        <div class="frame frame_3">
+                            <div class="frame-content">
+                                <img src="https://sun9-26.userapi.com/impg/1g1bGPHapm4FeiSrQk02NJQ2wlcoWsCNjsQZFQ/BYhcPgIFC_4.jpg?size=500x300&quality=95&sign=f933325dcf2b2df6153d05b8dbcaabb9&type=album" style="width: 100%; height: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="controls">
+                <label for="frame1"></label>
+                <label for="frame2"></label>
+                <label for="frame3"></label>
+            </div>
+            <div id="bullets">
+                <label for="frame1"></label>
+                <label for="frame2"></label>
+                <label for="frame3"></label>
+            </div>
+        </div>
+<br>
+
+ <section id="feedback">
+    <div class="slideshow-container">
+    <div class="container active"> 
+        <img src="avatar-female.png" alt="avatar"> 
+        <p><span>Марина Белова</span> 10.07.2023</p> 
+        <p>Замечательный конкурс, детям понравилось.</p> 
+        <p><a href="#">Посещенный конкурс</a></p> 
+    </div> 
+    <div class="container"> 
+        <img src="avatar-male.png" alt="avatar"> 
+        <p><span>Алексей Фролов</span> 10.07.2023</p> 
+        <p>Замечательный конкурс, детям понравилось.</p> 
+        <p><a href="#">Посещенный конкурс</a></p> 
+    </div> 
+
+</div>
+
+ <script>
+    let currentIndex = 0;
+    const containers = document.querySelectorAll('.container');
+
+    function showSlide(index) {
+        containers.forEach((container, i) => {
+            container.classList.remove('active');
+            if (i === index) {
+                container.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % containers.length; // Переход к следующему слайду
+        showSlide(currentIndex);
+    }
+
+    setInterval(nextSlide, 3000); // Меняем слайды каждые 3 секунды
+</script>  
+</section>
+
+
+<section id="about"style="right: 50%; text-align: center;" >
+    <h3>О нас</h3>
+    <p> Мы — команда, которая верит, что каждая встреча и каждое событие могут стать уникальным и незабываемым опытом. Наша семья объединяет различные таланты и увлечения, что позволяет нам создавать мероприятия, наполненные теплом, радостью и индивидуальным подходом.</p>
+</section>
+
+
+<section id="hello" style="right: 50%; text-align: center;">
+    <h3>Приветсвие от организатора</h3>
+    <video width="320" height="240" controls>
+        <source src="movie.mp4" type="video/mp4">
+    </video>
+</section>
+
+
+<section id="footerr">
+        <footer>
+            <br>
+            <p>&copy; 2025 Моя семья - мой космос. Все права защищены.</p>
+            <p>Телефон “+7 (4842) 23-45-67”</p>
+            <p>e-mail: family@cosmos.ru</p>
+            <p><a href="#" id="subscribe-link">Подписаться на новости мероприятия</a></p>
+        </footer>
+    </section>
+
+
+    <form id="subscription-form" action="/subscribe" method="POST">
+        <label for="email">Введите ваш email:</label>
+        <input type="email" id="email" name="email" required placeholder="example@example.com">
+    
+        <div>
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">Я согласен на обработку моих персональных данных</label>
+        </div>
+    
+        <button type="submit">Подписаться</button>
+    </form>
+    
+    
+    <script>
+        document.getElementById('subscribe-link').addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем переход по ссылке
+            const form = document.getElementById('subscription-form');
+            form.style.display = 'block'; // Показываем форму при нажатии на ссылку
+        });
+    
+        document.getElementById('subscription-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение формы
+    
+            // Здесь можно добавить код для отправки данных (например, с помощью fetch или AJAX)
+            
+            // После успешной отправки скрываем форму
+            this.style.display = 'none';
+            
+            // Можно также показать сообщение об успешной подписке
+            alert('Вы успешно подписались на рассылку!');
+        });
+    </script>
+
+
+        <script> 
+            function toggleTheme() { 
+                const body = document.body; 
+                const links = document.querySelectorAll("ul li a"); 
+                const allUls = document.querySelectorAll("ul"); // Выбор всех <ul> 
+                const currentTheme = body.getAttribute("data-theme"); 
+             
+                if (currentTheme === "light") { 
+                    body.setAttribute("data-theme", "dark"); 
+                    body.style.backgroundColor = "#333333"; // Темный фон 
+                    body.style.color = "#ffffff"; // Светлый текст 
+        
+                    links.forEach(link => { 
+                        link.style.color = "white"; // Цвет текста ссылок в темной теме 
+                    }); 
+        
+                    allUls.forEach(ul => { 
+                        ul.style.backgroundColor = "#444"; // Темный фон для всех <ul> 
+                        ul.style.color = "white"; // Светлый текст для всех <ul> 
+                    }); 
+        
+                } else { 
+                    body.setAttribute("data-theme", "light"); 
+                    body.style.backgroundColor = "#ffffff"; // Светлый фон 
+                    body.style.color = "#000000"; // Темный текст 
+        
+                    links.forEach(link => { 
+                        link.style.color = "black"; // Цвет текста ссылок в светлой теме 
+                    }); 
+        
+                    allUls.forEach(ul => { 
+                        ul.style.backgroundColor = "#f1f1f1"; // Светлый фон для всех <ul> 
+                        ul.style.color = "black"; // Темный текст для всех <ul> 
+                    }); 
+                } 
+            } 
+        </script>
+
+    </body>
+</html>
